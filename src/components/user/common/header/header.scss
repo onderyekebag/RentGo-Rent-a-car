@@ -1,0 +1,104 @@
+@use "../../../../assets/scss/variables" as v;
+@use "../../../../assets/scss/mixins" as m;
+
+.header {
+  .topbar {
+    box-shadow: 0px 5px 1rem rgba(255, 255, 255, 0.5);
+    background-color: v.$color1;
+    padding: 3rem;
+    .container-fluid {
+      @include m.flexbox(row, space-between);
+      margin-top: -1.8rem;
+    }
+    .contact {
+      a {
+        color: v.$color4;
+        font-size: 1rem;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: 500;
+        svg {
+          font-size: 1.2rem;
+          color: v.$color2;
+        }
+      }
+    }
+    .social-icons {
+      svg {
+        color: v.$color2;
+        margin-left: 1.8rem;
+        font-size: 1.2rem;
+      }
+    }
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
+  .menubar-container {
+    .menubar {
+      background-color: v.$color3;
+      margin-top: -2.7rem;
+      padding: 1.5rem;
+      font-weight: 300;
+      h2 {
+        color: v.$color4;
+        font-size: 2.5rem;
+        padding-left: 1.8rem;
+        font-weight: 600;
+        span {
+          color: v.$color2;
+          font-weight: 700;
+        }
+      }
+      .menus {
+        a {
+          font-size: 1.3rem;
+          color: v.$color4;
+          svg {
+            font-size: 1.2rem;
+            margin-top: -3px;
+          }
+          @media (max-width: 992px) {
+            font-size: 1rem;
+            padding-left: 2rem;
+            margin: 0.2rem;
+            border-radius: 0.5rem;
+            &:hover {
+              background-color: v.$color2;
+              transition: 0.5s;
+            }
+          }
+        }
+      }
+      .btn-login {
+        margin-right: 0.5rem;
+        background-color: transparent;
+        border: 1px solid v.$color2;
+        color: v.$color2;
+        font-weight: 500;
+        @media (max-width: 992px) {
+          margin-left: 2rem;
+          padding: 0.3rem 1rem;
+        }
+      }
+      .btn-register {
+        background-color: v.$color2;
+        color: v.$color3;
+        border: none;
+        font-weight: 500;
+        @media (max-width: 992px) {
+          padding: 0.3rem 1rem;
+        }
+      }
+      .navbar-toggler {
+        background-color: v.$color2;
+      }
+
+      @media (max-width: 992px) {
+        margin: auto;
+        padding: 0.5rem;
+        font-weight: 400;
+      }
+    }
+  }
+}

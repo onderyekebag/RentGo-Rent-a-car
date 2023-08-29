@@ -1,0 +1,24 @@
+$color1: rgb(28, 30, 50);
+$color2: rgb(226, 113, 8);
+$color3: rgb(51, 55, 88);
+$color4: rgb(237, 237, 237);
+$color5: rgba(28, 30, 50, 0.5);
+$color6: rgba(226, 113, 8, 0.5);
+$color7: rgba(28, 30, 50, 0.7);
+
+/* BOOTSTRAP */
+$primary: $color1;
+$secondary: $color2;
+$font-family-sans-serif: "Bricolage";
+$navbar-light-color: $color1;
+$navbar-light-hover-color: $color2;
+$navbar-light-active-color: $color2;
+$nav-link-font-weight: 600;
+$border-radius: 0;
+$form-feedback-valid-color: $color1;
+$nav-tabs-link-active-color: $color2;
+
+/* SWEETALERT */
+$swal2-confirm-button-background-color: $color1;
+$swal2-cancel-button-background-color: $color2;
+$swal2-success: $color1;

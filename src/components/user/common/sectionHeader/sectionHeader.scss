@@ -1,0 +1,20 @@
+@use "../../../../assets/scss/variables" as v;
+@use "../../../../assets/scss/mixins" as m;
+.section-header {
+  @include m.flexbox(column, center, center);
+  text-transform: uppercase;
+  h2 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: v.$color1;
+    span {
+      color: v.$color2;
+    }
+    @media (max-width: 992px) {
+      font-size: 2rem;
+    }
+    @media (max-width: 400px) {
+      font-size: 1.4rem;
+    }
+  }
+}

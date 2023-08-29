@@ -1,0 +1,10 @@
+.team {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  .row {
+    .col {
+      margin: 2rem;
+    }
+  }
+}
