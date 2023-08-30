@@ -1,0 +1,77 @@
+@use "../../../../assets/scss/variables" as v;
+@use "../../../../assets/scss/mixins" as m;
+
+.contact-info {
+  background-color: v.$color1;
+  padding: 3rem;
+  .head {
+    @include m.flexbox();
+    svg {
+      font-size: 3rem;
+      margin-top: 0.3rem;
+      margin-right: 2rem;
+      color: v.$color2;
+      margin-left: -1.5rem;
+    }
+    .content {
+      h3 {
+        color: v.$color4;
+        font-size: 1.4rem;
+      }
+      p {
+        color: rgb(124, 124, 124);
+        font-size: 1.1rem;
+      }
+    }
+  }
+  .social-media {
+    text-align: center;
+    margin-top: 2rem;
+    a {
+      color: v.$color4;
+      margin-right: 3rem;
+      svg {
+        font-size: 1.8rem;
+
+        &:hover {
+          color: v.$color1;
+          border-radius: 20%;
+          background-color: v.$color4;
+        }
+      }
+    }
+  }
+  @media (max-width: 992px) {
+    margin-top: 1rem;
+    padding: 2rem;
+    .head {
+      svg {
+        font-size: 2rem;
+        margin-top: 0.1rem;
+        margin-right: 1rem;
+        color: v.$color2;
+        margin-left: -0.5rem;
+      }
+      .content {
+        h3 {
+          color: v.$color4;
+          font-size: 1rem;
+        }
+        p {
+          color: rgb(124, 124, 124);
+          font-size: 0.8rem;
+        }
+      }
+    }
+    .social-media {
+      margin-top: 1.2rem;
+      a {
+        color: v.$color4;
+        margin-right: 1rem;
+        svg {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+}

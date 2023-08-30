@@ -3,6 +3,7 @@ export const settings = {
   siteName: "RentGo",
   siteUrl: "rentgo.com",
   email: "support@rentgo.com",
+  CustomerEmail: "customer@rentgo.com",
   phone1: "(845)-356-0642",
   address: "431 5th Ave, New York, NY 10016, USA",
   mapUrl: "https://goo.gl/maps/pGV851yYSA79FWRk8",
