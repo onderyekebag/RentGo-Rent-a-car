@@ -1,0 +1,41 @@
+@use "../../../assets/scss/variables" as v;
+@use "../../../assets/scss/mixins" as m;
+.auth {
+  height: 100vh;
+  background-color: v.$color1;
+  @include m.flexbox(column, center, center);
+  .card {
+    width: 65vh;
+    height: 75vh;
+    padding: 2.4rem;
+    background-color: v.$color4;
+
+    .forgot-password {
+      text-align: right;
+      margin: 0.4rem;
+      a {
+      }
+    }
+    .login-fa-go {
+      margin-top: 1rem;
+      display: flex;
+      .facebook-icon {
+        width: 50%;
+        padding: 0.4rem;
+        text-align: center;
+        background-color: darkblue;
+        font-size: 1.4rem;
+        color: #fff;
+      }
+      .google-icon {
+        width: 50%;
+        padding: 0.4rem;
+        text-align: center;
+        background-color: rgb(219, 3, 3);
+        font-size: 1.5rem;
+        color: #fff;
+        margin-left: 1rem;
+      }
+    }
+  }
+}
