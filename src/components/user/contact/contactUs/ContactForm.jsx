@@ -27,7 +27,12 @@ const ContactForm = () => {
       .required("Enter a message"),
   });
 
-  const onSubmit = () => {};
+  const onSubmit = (values) => {
+    try {
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const formik = useFormik({
     initialValues,
