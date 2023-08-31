@@ -5,6 +5,7 @@ import PasswordInput from "../passwordInput/PasswordInput";
 import { useFormik } from "formik";
 import { BsFacebook } from "react-icons/bs";
 import { AiFillGoogleCircle } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const initialValues = {
@@ -52,6 +53,13 @@ const Login = () => {
         </Form.Group>
         <Button variant="primary" className="p-2 w-100" type="submit">
           Login
+        </Button>
+        <Button
+          as={Link}
+          to="register"
+          className="p-2 w-100 bg-light text-dark mt-4 mb-3"
+        >
+          New Register
         </Button>
       </Form>
       <div className="forgot-password">

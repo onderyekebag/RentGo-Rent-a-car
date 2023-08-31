@@ -20,7 +20,10 @@ const CustomRoutes = () => {
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="contact" element={<ContactPage />} />
-          <Route path="auth" element={<AuthPage />} />
+          <Route path="auth">
+            <Route index element={<AuthPage />} />
+            <Route path="register" element={<AuthPage />} />
+          </Route>
           <Route path="privacy-policy" element={<PravicyPolicyPage />} />
 
           <Route path="vehicles">

@@ -1,20 +1,36 @@
 @use "../../../assets/scss/variables" as v;
 @use "../../../assets/scss/mixins" as m;
 .auth {
-  height: 100vh;
+  .auth-navigate {
+    margin-bottom: 0.7rem;
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2rem;
+
+      svg {
+        font-size: 1.6rem;
+        color: v.$color2;
+      }
+    }
+  }
+  height: 105vh;
   background-color: v.$color1;
   @include m.flexbox(column, center, center);
   .card {
-    width: 65vh;
-    height: 75vh;
-    padding: 2.4rem;
+    width: auto;
+    height: auto;
+    padding: 2.8rem;
     background-color: v.$color4;
-
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      border-bottom: 1px solid gray;
+      margin-bottom: 15px;
+    }
     .forgot-password {
       text-align: right;
       margin: 0.4rem;
-      a {
-      }
     }
     .login-fa-go {
       margin-top: 1rem;
@@ -37,5 +53,23 @@
         margin-left: 1rem;
       }
     }
+  }
+  .card-register {
+    width: 55%;
+    height: auto;
+    padding: 2.4rem;
+    background-color: v.$color4;
+    @media (max-width: 992px) {
+      width: 95%;
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      border-bottom: 1px solid gray;
+      margin-bottom: 15px;
+    }
+  }
+  .btn-register {
+    margin-top: 1rem;
   }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import { MdLocationOn, MdEmail } from "react-icons/md";
 import { settings } from "../../../../helpers/Settings";
 import {
@@ -9,11 +9,17 @@ import {
   SlSocialTwitter,
   SlSocialYoutube,
 } from "react-icons/sl";
+import { BiSolidPhoneCall } from "react-icons/bi";
 import "./contactUs.scss";
 import ContactForm from "./ContactForm";
 const ContactUs = () => {
   return (
     <Container>
+      <div className="btn-call">
+        <a href={`tel:${settings.phone1}`}>
+          <BiSolidPhoneCall /> Do You Need Support?
+        </a>
+      </div>
       <Row>
         <Col md={6} className="contact-form">
           <ContactForm />

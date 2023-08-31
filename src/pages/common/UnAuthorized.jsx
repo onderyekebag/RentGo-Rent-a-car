@@ -9,7 +9,7 @@ const UnAuthorized = () => {
       <Spacer />
       <NotFound
         ops="3"
-        desc="Oops! The page you're looking for could not be found."
+        desc="Sorry, but you don't have permission to access this resource. Please make sure you have the proper credentials and try again"
       />
       <Spacer />
     </UserTemplate>

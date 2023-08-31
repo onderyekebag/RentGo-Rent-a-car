@@ -2,6 +2,8 @@ import { useFormik } from "formik";
 import React, { useState } from "react";
 import { Button, Form, Spinner } from "react-bootstrap";
 import * as Yup from "yup";
+import { sendMessage } from "../../../../api/ContactService";
+import { toast } from "../../../../helpers/functions/Swal";
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
 
@@ -27,10 +29,16 @@ const ContactForm = () => {
       .required("Enter a message"),
   });
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
+    setLoading(true);
     try {
+      await sendMessage(values);
+      formik.resetForm();
+      toast("Your message has been sent successfully", "success");
     } catch (err) {
-      console.log(err);
+      toast(err.response.data.message, "warning");
+    } finally {
+      setLoading(false);
     }
   };
 

@@ -8,7 +8,7 @@ const UserMenu = () => {
       <Button className="btn-login" as={Link} to="/auth">
         Login
       </Button>
-      <Button className="btn-register" as={Link} to="/auth">
+      <Button className="btn-register" as={Link} to="/auth/register">
         Register
       </Button>
     </div>
