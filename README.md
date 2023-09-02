@@ -3,17 +3,17 @@
 ## Proje React-Vite ile oluşturuldu
 
 - Vite + React
-<<<<<<< HEAD
 
 ---
 
 => npm install
 ==> npm run dev
 =======
-- ------------------------
-  => npm install
-  ==> npm run dev
->>>>>>> 40f8907a617928ec4edafe93ce4fbded7e04304a
+
+---
+
+=> npm install
+==> npm run dev
 
 ## Paket kurulumları yapıldı
 
