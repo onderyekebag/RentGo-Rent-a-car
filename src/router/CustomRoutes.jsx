@@ -11,10 +11,12 @@ import ProfilePage from "../pages/user/ProfilePage";
 import ReservationsPage from "../pages/user/ReservationsPage";
 import ReservationDetails from "../pages/user/ReservationDetails";
 import NotFoundPage from "../pages/common/NotFound";
+import ScrollToTop from "../components/common/scrollToTop/ScrollToTop";
 
 const CustomRoutes = () => {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/">
           <Route index element={<HomePage />} />

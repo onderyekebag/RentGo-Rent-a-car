@@ -1,0 +1,44 @@
+@use "../../../assets/scss/variables" as v;
+@use "../../../assets/scss/mixins" as m;
+.vehicle-card {
+  background: linear-gradient(10deg, v.$color7, v.$color4);
+  text-align: center;
+  padding: 0.4rem;
+  border-top: 1px solid v.$color5;
+  border-right: 1px solid v.$color5;
+  border-left: 1px solid v.$color6;
+  border-bottom: 1px solid v.$color6;
+  h4 {
+    color: v.$color4;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  .details {
+    display: flex;
+    flex-wrap: wrap;
+    color: v.$color4;
+    font-size: 1.1rem;
+    > div {
+      padding: 0.7rem;
+      flex: 1 0 50%;
+      border-top: 1px solid v.$color4;
+      border-right: 1px solid v.$color4;
+      white-space: nowrap;
+      &:nth-child(2n) {
+        border-right: none;
+      }
+      &:nth-child(1) {
+        border-top: none;
+      }
+      &:nth-child(2) {
+        border-top: none;
+      }
+    }
+    svg {
+      color: v.$color1;
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+      margin-right: 0.2rem;
+    }
+  }
+}

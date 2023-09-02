@@ -9,7 +9,7 @@ const NewMember = () => {
         <h1>50% OFF</h1>
         <h3>SPECIAL OFFER FOR NEW MEMBERS</h3>
         <p>Only for Sunday from 1st Jan to 30th Jan 2045</p>
-        <Button as={Link} to="/auth">
+        <Button as={Link} to="/auth/register">
           Register Now
         </Button>
       </div>

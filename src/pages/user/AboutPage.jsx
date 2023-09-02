@@ -2,8 +2,8 @@ import React from "react";
 import UserTemplate from "../../templates/UserTemplate";
 import PageHeader from "../../components/user/common/pageHeader/PageHeader";
 import Spacer from "../../components/common/spacer/Spacer";
-import WelcomeRent from "../../components/user/about/welcomeAbout/WelcomeRent";
 import SectionHeader from "../../components/user/common/sectionHeader/SectionHeader";
+import WelcomeRent from "../../components/user/about/welcomeAbout/WelcomeRent";
 import Driver from "../../components/user/about/driver/Driver";
 const AboutPage = () => {
   return (
