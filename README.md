@@ -3,6 +3,7 @@
 ## Proje React-Vite ile oluşturuldu
 
 - Vite + React
+- ------------------------
   => npm install
   ==> npm run dev
 
