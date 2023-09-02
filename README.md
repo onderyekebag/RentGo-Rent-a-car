@@ -3,6 +3,8 @@
 ## Proje React-Vite ile oluşturuldu
 
 - Vite + React
+  => npm install
+  ==> npm run dev
 
 ## Paket kurulumları yapıldı
 
@@ -28,7 +30,7 @@
 - web-vitals
 - react-scripts
 
-********************************************************************************************************
+---
 
 ## React + Vite
 
