@@ -7,6 +7,7 @@ import WelcomeRent from "../../components/user/about/welcomeAbout/WelcomeRent";
 import Team from "../../components/user/about/team/Team";
 import NewMember from "../../components/user/home/newMemberBanner/NewMember";
 import Driver from "../../components/user/about/driver/Driver";
+import FindYourCars from "../../components/user/home/findYourCars/FindYourCars";
 
 const HomePage = () => {
   return (
@@ -16,6 +17,10 @@ const HomePage = () => {
       <SectionHeader title1="Welcome to" title2="RentGo" />
       <Spacer height={25} />
       <WelcomeRent />
+      <Spacer />
+      <SectionHeader title1="Find Your" title2="Cars" />
+      <Spacer height={25} />
+      <FindYourCars />
       <Spacer />
       <SectionHeader title1="Executive" title2="Team" />
       <Spacer height={25} />
