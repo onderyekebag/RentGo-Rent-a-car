@@ -10,7 +10,7 @@ export const getVehiclesByPage = (
   page = 0,
   size = 6,
   sort = "model",
-  direction = "ASC"
+  direction = "DESC"
 ) => {
   return axios.get(
     `${API_URL}/car/visitors/pages?page=${page}&size=${size}&sort=${sort}&direction=${direction}`

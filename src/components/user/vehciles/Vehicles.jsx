@@ -3,14 +3,17 @@ import { Col, Container, Pagination, Row } from "react-bootstrap";
 import VehicleCard from "./VehicleCard";
 import { getVehiclesByPage } from "../../../api/VehcileServise";
 import Loading from "../../common/loading/Loading";
-
+import "./vehicles.scss";
 const Vehicles = () => {
   const [vehicles, setVehicles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [paging, setPaging] = useState({});
   const loadData = async (page) => {
     try {
       const resp = await getVehiclesByPage(page);
       setVehicles(resp.data.content);
+      const { totalPages, pageable } = resp.data;
+      setPaging({ totalPages, pageNumber: pageable.pageNumber });
     } catch (err) {
       console.log(err);
     } finally {
@@ -21,7 +24,7 @@ const Vehicles = () => {
     loadData(0);
   }, []);
   return (
-    <Container>
+    <Container className="vehicles">
       {loading ? (
         <Loading />
       ) : (
@@ -33,25 +36,38 @@ const Vehicles = () => {
               </Col>
             ))}
           </Row>
-          <Row>
-            <Pagination>
-              <Pagination.First />
-              <Pagination.Prev />
-              <Pagination.Item>{1}</Pagination.Item>
-              <Pagination.Ellipsis />
+          {paging.totalPages > 1 && (
+            <Row className="mt-5 justify-content-center">
+              <Pagination>
+                <Pagination.First
+                  onClick={() => loadData(0)}
+                  disabled={paging.pageNumber <= 0}
+                />
+                <Pagination.Prev
+                  onClick={() => loadData(paging.pageNumber - 1)}
+                  disabled={paging.pageNumber <= 0}
+                />
+                {[...Array(paging.totalPages)].map((item, index) => (
+                  <Pagination.Item
+                    active={index === paging.pageNumber}
+                    key={index}
+                    onClick={() => loadData(index)}
+                  >
+                    {index + 1}
+                  </Pagination.Item>
+                ))}
 
-              <Pagination.Item>{10}</Pagination.Item>
-              <Pagination.Item>{11}</Pagination.Item>
-              <Pagination.Item active>{12}</Pagination.Item>
-              <Pagination.Item>{13}</Pagination.Item>
-              <Pagination.Item disabled>{14}</Pagination.Item>
-
-              <Pagination.Ellipsis />
-              <Pagination.Item>{20}</Pagination.Item>
-              <Pagination.Next />
-              <Pagination.Last />
-            </Pagination>
-          </Row>
+                <Pagination.Next
+                  onClick={() => loadData(paging.pageNumber + 1)}
+                  disabled={paging.pageNumber >= paging.totalPages - 1}
+                />
+                <Pagination.Last
+                  onClick={() => loadData(paging.totalPages - 1)}
+                  disabled={paging.pageNumber >= paging.totalPages - 1}
+                />
+              </Pagination>
+            </Row>
+          )}
         </>
       )}
     </Container>

@@ -7,7 +7,7 @@ import Register from "./Register";
 import { MdArrowBack } from "react-icons/md";
 const Auth = () => {
   const location = useLocation();
-  console.log(location.pathname);
+
   return (
     <div className="auth">
       <div className="auth-navigate">

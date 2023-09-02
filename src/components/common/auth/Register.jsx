@@ -6,6 +6,7 @@ import ReactInputMask from "react-input-mask-next";
 import { useFormik } from "formik";
 import PasswordInput from "../passwordInput/PasswordInput";
 import { Link } from "react-router-dom";
+import { register } from "../../../api/UserService";
 const Register = () => {
   const [loading, setLoading] = useState(false);
   const initialValues = {
@@ -48,7 +49,7 @@ const Register = () => {
   const onSubmit = async (values) => {
     setLoading(true);
     try {
-      // await register(values);
+      await register(values);
       toast("You're registered", "success");
       formik.resetForm();
     } catch (err) {
