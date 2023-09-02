@@ -7,7 +7,7 @@
 ---
 
 - npm install
-- # npm run dev
+- npm run dev
 
 ## Paket kurulumları yapıldı
 

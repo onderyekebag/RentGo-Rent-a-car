@@ -8,6 +8,7 @@ import { AiFillGoogleCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { AiTwotoneMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
+import { login } from "../../../api/UserService";
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const initialValues = {
@@ -20,7 +21,15 @@ const Login = () => {
     password: Yup.string().required("Please enter your password"),
   });
 
-  const onSubmit = () => {};
+  const onSubmit = async (values) => {
+    setLoading(true);
+    try {
+      const resp = login(values);
+    } catch (err) {
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const formik = useFormik({
     initialValues,
