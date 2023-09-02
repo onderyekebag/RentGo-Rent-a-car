@@ -6,6 +6,8 @@ import { useFormik } from "formik";
 import { BsFacebook } from "react-icons/bs";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { AiTwotoneMail } from "react-icons/ai";
+import { RiLockPasswordLine } from "react-icons/ri";
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const initialValues = {
@@ -30,6 +32,7 @@ const Login = () => {
       <Form noValidate onSubmit={formik.handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Email address</Form.Label>
+          <AiTwotoneMail className="input-icons" />
           <Form.Control
             type="email"
             placeholder="Enter email"
@@ -43,6 +46,7 @@ const Login = () => {
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Password</Form.Label>
+          <RiLockPasswordLine className="input-icons" />
           <PasswordInput
             placeholder="Enter password"
             {...formik.getFieldProps("password")}

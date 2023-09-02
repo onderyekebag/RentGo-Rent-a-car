@@ -7,6 +7,11 @@ import { useFormik } from "formik";
 import PasswordInput from "../passwordInput/PasswordInput";
 import { Link } from "react-router-dom";
 import { register } from "../../../api/UserService";
+import { BsFillPersonVcardFill, BsPhoneVibrateFill } from "react-icons/bs";
+import { MdLocationPin } from "react-icons/md";
+import { TbZip } from "react-icons/tb";
+import { AiTwotoneMail } from "react-icons/ai";
+import { RiLockPasswordLine } from "react-icons/ri";
 const Register = () => {
   const [loading, setLoading] = useState(false);
   const initialValues = {
@@ -72,6 +77,7 @@ const Register = () => {
           <Col md={6} sm={12}>
             <Form.Group className="mb-3">
               <Form.Label>First Name</Form.Label>
+              <BsFillPersonVcardFill className="input-icons" />
               <Form.Control
                 type="text"
                 {...formik.getFieldProps("firstName")}
@@ -88,6 +94,7 @@ const Register = () => {
           <Col md={6} sm={12}>
             <Form.Group>
               <Form.Label>Last Name</Form.Label>
+              <BsFillPersonVcardFill className="input-icons" />
               <Form.Control
                 type="text"
                 {...formik.getFieldProps("lastName")}
@@ -102,8 +109,9 @@ const Register = () => {
         </Row>
         <Row>
           <Col md={6} sm={12}>
-            <Form.Group>
+            <Form.Group className="mb-3">
               <Form.Label>Phone Number</Form.Label>
+              <BsPhoneVibrateFill className="input-icons" />
               <Form.Control
                 type="text"
                 as={ReactInputMask}
@@ -124,6 +132,7 @@ const Register = () => {
           <Col md={6} sm={12}>
             <Form.Group>
               <Form.Label>Address</Form.Label>
+              <MdLocationPin className="input-icons" />
               <Form.Control
                 type="text"
                 {...formik.getFieldProps("address")}
@@ -138,8 +147,9 @@ const Register = () => {
         </Row>
         <Row>
           <Col md={6} sm={12}>
-            <Form.Group>
+            <Form.Group className="mb-3">
               <Form.Label>Zip Code</Form.Label>
+              <TbZip className="input-icons" />
               <Form.Control
                 type="text"
                 {...formik.getFieldProps("zipCode")}
@@ -154,6 +164,7 @@ const Register = () => {
           <Col md={6} sm={12}>
             <Form.Group>
               <Form.Label>Email</Form.Label>
+              <AiTwotoneMail className="input-icons" />
               <Form.Control
                 type="email"
                 {...formik.getFieldProps("email")}
@@ -170,6 +181,7 @@ const Register = () => {
           <Col md={6} sm={12}>
             <Form.Group>
               <Form.Label>Password</Form.Label>
+              <RiLockPasswordLine className="input-icons" />
               <PasswordInput
                 {...formik.getFieldProps("password")}
                 isValid={formik.touched.password && !formik.errors.password}
@@ -181,6 +193,7 @@ const Register = () => {
           <Col md={6} sm={12}>
             <Form.Group>
               <Form.Label>Confirm Password</Form.Label>
+              <RiLockPasswordLine className="input-icons" />
               <PasswordInput
                 {...formik.getFieldProps("confirmPassword")}
                 isValid={
