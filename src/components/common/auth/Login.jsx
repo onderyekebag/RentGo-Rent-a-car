@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { AiTwotoneMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { login } from "../../../api/UserService";
+import { encryptedLocalStorage } from "../../../helpers/functions/EncryptStorage";
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const initialValues = {
@@ -24,7 +25,8 @@ const Login = () => {
   const onSubmit = async (values) => {
     setLoading(true);
     try {
-      const resp = login(values);
+      const resp = await login(values);
+      encryptedLocalStorage("token", resp.data.token);
     } catch (err) {
     } finally {
       setLoading(false);
