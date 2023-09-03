@@ -6,6 +6,8 @@ export const question = (title, text) => {
     text,
     icon: "question",
     showCancelButton: true,
+    confirmButtonColor: "#d33",
+    cancelButtonColor: "#1C1E32",
   });
 };
 

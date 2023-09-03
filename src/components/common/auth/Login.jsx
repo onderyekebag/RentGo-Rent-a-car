@@ -5,13 +5,18 @@ import PasswordInput from "../passwordInput/PasswordInput";
 import { useFormik } from "formik";
 import { BsFacebook } from "react-icons/bs";
 import { AiFillGoogleCircle } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiTwotoneMail } from "react-icons/ai";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { login } from "../../../api/UserService";
+import { getUser, login } from "../../../api/UserService";
 import { encryptedLocalStorage } from "../../../helpers/functions/EncryptStorage";
+import { toast } from "../../../helpers/functions/Swal";
+import { useAppDispatch } from "../../../store/Hooks";
+import { loginFailed, loginSuccess } from "../../../store/slices/AuthSlice";
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const initialValues = {
     email: "",
     password: "",
@@ -25,9 +30,14 @@ const Login = () => {
   const onSubmit = async (values) => {
     setLoading(true);
     try {
-      const resp = await login(values);
-      encryptedLocalStorage("token", resp.data.token);
+      const respAuth = await login(values);
+      encryptedLocalStorage.setItem("token", respAuth.data.token);
+      const respUser = await getUser();
+      dispatch(loginSuccess(respUser.data));
+      navigate("/");
     } catch (err) {
+      dispatch(loginFailed());
+      toast(err.response.data.message, "error");
     } finally {
       setLoading(false);
     }

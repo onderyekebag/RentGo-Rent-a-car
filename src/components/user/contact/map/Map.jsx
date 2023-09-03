@@ -5,6 +5,7 @@ const Map = () => {
   return (
     <div>
       <iframe
+        title={settings.siteName}
         src={settings.mapEmbedUrl}
         width="100%"
         height="450"
