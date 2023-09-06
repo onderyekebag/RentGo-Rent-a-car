@@ -1,0 +1,65 @@
+@use "../../../assets/scss/variables" as v;
+@use "../../../assets/scss/mixins" as m;
+.vehicle-details {
+  padding: 1rem;
+  .vehicle-name {
+    background: linear-gradient(180deg, v.$color6, v.$color5);
+    @include m.flexbox($justify-content: space-between);
+    padding: 2rem;
+    color: v.$color1;
+    h2 {
+      font-weight: 900;
+    }
+    h3 {
+      font-weight: 600;
+    }
+  }
+
+  .details {
+    background: linear-gradient(0deg, v.$color6, v.$color5);
+    .row {
+      .vehicle-details {
+        h4 {
+          width: 95%;
+          padding: 0.5rem;
+          border-bottom: 1px dotted v.$color1;
+          padding-right: 2rem;
+        }
+        .row {
+          .col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            font-weight: 600;
+            svg {
+              color: v.$color2;
+              font-size: 3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .available {
+    margin-top: 2rem;
+    .total-price {
+      font-size: 1.5rem;
+      color: v.$color1;
+      font-weight: 800;
+      padding: 1rem;
+      background: linear-gradient(45deg, v.$color6, v.$color5);
+    }
+    .total-button {
+      padding: 1rem;
+      background: linear-gradient(-45deg, v.$color6, v.$color5);
+    }
+  }
+  .booking-card {
+    margin-top: 1rem;
+  }
+}
