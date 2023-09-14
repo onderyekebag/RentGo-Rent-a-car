@@ -11,3 +11,9 @@ export const isVehicleAvailable = (dto) => {
     { headers: authHeader() }
   );
 };
+
+export const createReservation = (carId, reservation) => {
+  return axios.post(`${API_URL}/reservations/add?carId=${carId}`, reservation, {
+    headers: authHeader(),
+  });
+};

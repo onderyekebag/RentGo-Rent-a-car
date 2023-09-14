@@ -15,13 +15,23 @@ import {
 import InputMask from "react-input-mask-next";
 import * as Yup from "yup";
 import { useAppSelector } from "../../../store/Hooks";
-import { combineDateAndTime } from "../../../helpers/functions/DateTime";
-import { isVehicleAvailable } from "../../../api/ReservationService";
+import {
+  checkDates,
+  checkExpireDate,
+  combineDateAndTime,
+  getCurrentDate,
+} from "../../../helpers/functions/DateTime";
+import {
+  createReservation,
+  isVehicleAvailable,
+} from "../../../api/ReservationService";
+import { toast } from "../../../helpers/functions/Swal";
+import { useNavigate } from "react-router-dom";
 const Booking = () => {
   const [loading, setloading] = useState(false);
   const { isUserLogin } = useAppSelector((state) => state.auth);
   const { vehicle } = useAppSelector((state) => state.reservation);
-
+  const navigate = useNavigate();
   const [totalPrice, setTotalPrice] = useState(0);
   const [vehicleAvailable, setVehicleAvailable] = useState(false);
 
@@ -64,9 +74,29 @@ const Booking = () => {
   });
 
   const onSubmit = async (values) => {
+    const {
+      pickUpDate,
+      pickUpTime,
+      dropOffDate,
+      dropOffTime,
+      pickUpLocation,
+      dropOffLocation,
+    } = values;
+
+    const dto = {
+      pickUpTime: combineDateAndTime(pickUpDate, pickUpTime),
+      dropOffTime: combineDateAndTime(dropOffDate, dropOffTime),
+      pickUpLocation,
+      dropOffLocation,
+    };
     setloading(true);
     try {
+      const resp = await createReservation(vehicle.id, dto);
+      toast("Reservation created", "success");
+      formik.resetForm();
+      navigate("/user/reservations");
     } catch (err) {
+      toast(err.response.data.message, "error");
     } finally {
       setloading(false);
     }
@@ -87,7 +117,6 @@ const Booking = () => {
 
   const handleAvailability = async () => {
     const { pickUpDate, pickUpTime, dropOffDate, dropOffTime } = formik.values;
-
     const dto = {
       carId: vehicle.id,
       pickUpDateTime: combineDateAndTime(pickUpDate, pickUpTime),
@@ -95,12 +124,22 @@ const Booking = () => {
     };
     setloading(true);
     try {
+      if (!checkDates(formik.values)) {
+        throw new Error(
+          "Dropp off date should be at least 1 hour later from pick up date."
+        );
+      }
       const resp = await isVehicleAvailable(dto);
       const { available, totalPrice } = resp.data;
       setTotalPrice(totalPrice);
       setVehicleAvailable(available);
+      if (!available) {
+        throw new Error(
+          "The car you selected is not available. Please select different date."
+        );
+      }
     } catch (err) {
-      console.log(err);
+      toast(err.message, "error");
     } finally {
       setloading(false);
     }
@@ -151,6 +190,7 @@ const Booking = () => {
                 <Form.Control
                   type="date"
                   placeholder="Pick-up date"
+                  min={getCurrentDate()}
                   {...formik.getFieldProps("pickUpDate")}
                   isInvalid={isInvalid("pickUpDate")}
                   isValid={isValid("pickUpDate")}
@@ -182,6 +222,7 @@ const Booking = () => {
                 <Form.Control
                   type="date"
                   placeholder="Drop-off date"
+                  min={formik.values.pickUpDate}
                   {...formik.getFieldProps("dropOffDate")}
                   isInvalid={isInvalid("dropOffDate")}
                   isValid={isValid("dropOffDate")}
