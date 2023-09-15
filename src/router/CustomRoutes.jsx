@@ -9,9 +9,9 @@ import VehiclesPage from "../pages/user/VehiclesPage";
 import VehicleDetailsPage from "../pages/user/VehicleDetailsPage";
 import ProfilePage from "../pages/user/ProfilePage";
 import ReservationsPage from "../pages/user/ReservationsPage";
-import ReservationDetails from "../pages/user/ReservationDetails";
 import NotFoundPage from "../pages/common/NotFound";
 import ScrollToTop from "../components/common/scrollToTop/ScrollToTop";
+import ReservationDetailsPage from "../pages/user/ReservationDetails";
 
 const CustomRoutes = () => {
   return (
@@ -37,7 +37,10 @@ const CustomRoutes = () => {
             <Route index element={<ProfilePage />} />
             <Route path="reservations">
               <Route index element={<ReservationsPage />} />
-              <Route path=":reservationId" element={<ReservationDetails />} />
+              <Route
+                path=":reservationId"
+                element={<ReservationDetailsPage />}
+              />
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
