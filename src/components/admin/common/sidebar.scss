@@ -1,0 +1,49 @@
+@use "../../../assets/scss/variables" as v;
+@use "../../../assets/scss/mixins" as m;
+
+.admin-sidebar {
+  background-color: v.$color1;
+  @media (min-width: 992px) {
+    height: 100vh;
+    align-items: flex-start !important;
+  }
+  .container {
+    @media (min-width: 992px) {
+      flex-direction: column !important;
+    }
+  }
+  .navbar-nav {
+    @media (min-width: 992px) {
+      flex-direction: column !important;
+    }
+    .nav-link {
+      @media (min-width: 992px) {
+        font-size: 1.1rem;
+      }
+      color: v.$color4;
+      svg {
+        margin-right: 1rem;
+      }
+      &:hover {
+        color: v.$color2;
+      }
+    }
+  }
+  .navbar-toggler {
+    background: v.$color2; //!1:18
+  }
+  .admin-logo {
+    color: v.$color4;
+    font-size: 3.4rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    span {
+      color: v.$color2;
+    }
+    @media (max-width: 992px) {
+      font-size: 2rem;
+      margin-bottom: 0rem;
+      margin-top: 0rem;
+    }
+  }
+}
