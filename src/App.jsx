@@ -4,6 +4,7 @@ import { getUser } from "./api/UserService";
 import { useAppDispatch } from "./store/Hooks";
 import { loginFailed, loginSuccess } from "./store/slices/AuthSlice";
 import Loading from "./components/common/loading/Loading";
+import { encryptedLocalStorage } from "./helpers/functions/EncryptStorage";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -11,8 +12,11 @@ function App() {
 
   const loadData = async () => {
     try {
-      const resp = await getUser();
-      dispatch(loginSuccess(resp.data));
+      const token = encryptedLocalStorage.getItem("token");
+      if (token) {
+        const resp = await getUser();
+        dispatch(loginSuccess(resp.data));
+      }
     } catch (err) {
       console.log(err);
       dispatch(loginFailed());
@@ -20,8 +24,6 @@ function App() {
       setLoading(false);
     }
   };
-
-  //! 42:00
 
   useEffect(() => {
     loadData();

@@ -12,6 +12,9 @@ import ReservationsPage from "../pages/user/ReservationsPage";
 import NotFoundPage from "../pages/common/NotFound";
 import ScrollToTop from "../components/common/scrollToTop/ScrollToTop";
 import ReservationDetailsPage from "../pages/user/ReservationDetails";
+import ProtectedRoute from "./ProtectedRoute";
+import AdminDashboardPage from "../pages/admin/AdminDashboardPage";
+import UnAuthorized from "../pages/common/UnAuthorized";
 
 const CustomRoutes = () => {
   return (
@@ -27,6 +30,7 @@ const CustomRoutes = () => {
             <Route path="register" element={<AuthPage />} />
           </Route>
           <Route path="privacy-policy" element={<PravicyPolicyPage />} />
+          <Route path="unauthorized" element={<UnAuthorized />} />
 
           <Route path="vehicles">
             <Route index element={<VehiclesPage />} />
@@ -34,15 +38,45 @@ const CustomRoutes = () => {
           </Route>
 
           <Route path="user">
-            <Route index element={<ProfilePage />} />
+            <Route
+              index
+              element={
+                <ProtectedRoute>
+                  <ProfilePage />
+                </ProtectedRoute>
+              }
+            />
             <Route path="reservations">
-              <Route index element={<ReservationsPage />} />
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <ReservationsPage />
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path=":reservationId"
-                element={<ReservationDetailsPage />}
+                element={
+                  <ProtectedRoute>
+                    <ReservationDetailsPage />
+                  </ProtectedRoute>
+                }
               />
             </Route>
           </Route>
+
+          <Route path="admin">
+            <Route
+              index
+              element={
+                <ProtectedRoute admin={true}>
+                  <AdminDashboardPage />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
+
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

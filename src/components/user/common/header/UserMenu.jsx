@@ -34,7 +34,7 @@ const UserMenu = () => {
             className="me-2 text-dark"
             style={{ fontSize: "1.1rem", fontWeight: "600" }}
           >
-            <BsPersonCheckFill /> | jon admin
+            <BsPersonCheckFill /> | {user.firstName} {user.lastName}
           </Button>
           <Offcanvas show={show} onHide={handleClose} placement={"end"}>
             <Offcanvas.Header closeButton>

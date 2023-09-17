@@ -10,6 +10,7 @@ const ReservationDetailsPage = () => {
       <PageHeader title="Reservation Details" />
       <Spacer />
       <ReservationDetails />
+      <Spacer />
     </UserTemplate>
   );
 };

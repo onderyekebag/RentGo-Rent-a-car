@@ -1,1 +1,15 @@
 @use "../../../assets/scss/variables" as v;
+@use "../../../assets/scss/mixins" as m;
+
+.reservation-details {
+  .head {
+    @include m.flexbox(row, space-between, center, 1rem);
+    h1 {
+      font-size: 2.2rem;
+    }
+    border-bottom: 1px solid gray;
+  }
+  .reservations {
+    @include m.flexbox(column, center, center, 1rem);
+  }
+}

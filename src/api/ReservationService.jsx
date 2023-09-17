@@ -17,3 +17,23 @@ export const createReservation = (carId, reservation) => {
     headers: authHeader(),
   });
 };
+
+export const getReservations = (
+  page = 0,
+  size = 20,
+  sort = "pickUpTime",
+  direction = "DESC"
+) => {
+  return axios.get(
+    `${API_URL}/reservations/auth/all?page=${page}&size=${size}&sort=${sort}&direction=${direction}`,
+    {
+      headers: authHeader(),
+    }
+  );
+};
+
+export const getReservation = (id) => {
+  return axios.get(`${API_URL}/reservations/${id}/auth`, {
+    headers: authHeader(),
+  });
+};

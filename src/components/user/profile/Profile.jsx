@@ -16,6 +16,8 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import PasswordInput from "../../common/passwordInput/PasswordInput";
 import UpdatePassword from "./UpdatePassword";
 import { useAppSelector } from "../../../store/Hooks";
+import { updateUser } from "../../../api/UserService";
+import { toast } from "../../../helpers/functions/Swal";
 const Profile = () => {
   const [loading, setLoading] = useState(false);
   const user = useAppSelector((state) => state.auth.user);
@@ -23,42 +25,34 @@ const Profile = () => {
   const initialValues = {
     firstName,
     lastName,
-    email,
     phoneNumber,
     address,
     zipCode,
+    email,
   };
 
   const validationSchema = Yup.object({
     firstName: Yup.string().required("Please enter your first name"),
     lastName: Yup.string().required("Please enter your last name"),
-    email: Yup.string()
-      .email("Plese enter a valid email address")
-      .required("Please enter an email address"),
-    password: Yup.string()
-      .required("Please enter a password")
-      .min(8, "Please provide at least 8 characters")
-      .matches(/[a-z]+/, "One lowercase character")
-      .matches(/[A-Z]+/, "One uppercase character")
-      .matches(/\d+/, "One number"),
-    confirmPassword: Yup.string()
-      .required("Please re-enter your password")
-      .oneOf([Yup.ref("password")], "Password fields dosen't match"),
     phoneNumber: Yup.string()
-      .required("Please enter your phone number")
+      .required()
       .test(
-        "is_includes_",
-        "Please enter a valid phone number",
-        (val) => val && !val.includes("_")
+        "includes_",
+        "Please enter your phone number",
+        (value) => value && !value.includes("_")
       ),
     address: Yup.string().required("Please enter your address"),
     zipCode: Yup.string().required("Please enter your zip code"),
+    email: Yup.string().email().required("Please enter your email"),
   });
 
   const onSubmit = async (values) => {
     setLoading(true);
     try {
+      await updateUser(values);
+      toast("Your profile has been updated", "success");
     } catch (err) {
+      toast(err.response.data.message, "error");
     } finally {
       setLoading(false);
     }
@@ -68,7 +62,6 @@ const Profile = () => {
     initialValues,
     validationSchema,
     onSubmit,
-    enableReinitialize: true,
   });
   return (
     <Container className="profile">
@@ -180,6 +173,7 @@ const Profile = () => {
                   <AiTwotoneMail className="input-icons" />
                   <Form.Control
                     type="email"
+                    disabled
                     {...formik.getFieldProps("email")}
                     isValid={formik.touched.email && !formik.errors.email}
                     isInvalid={formik.touched.email && !!formik.errors.email}
