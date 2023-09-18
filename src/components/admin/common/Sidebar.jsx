@@ -52,10 +52,10 @@ const Sidebar = () => {
             <Nav.Link as={Link} to="/admin">
               <RiFileList3Line /> Reservations
             </Nav.Link>
-            <Nav.Link as={Link} to="/admin">
+            <Nav.Link as={Link} to="/admin/contact-message">
               <RiMessage3Line /> Contact Messages
             </Nav.Link>
-            <Nav.Link as={Link} to="/admin">
+            <Nav.Link as={Link} to="/">
               <RiHome3Line /> Web Site
             </Nav.Link>
             <Nav.Link onClick={handleLogout}>

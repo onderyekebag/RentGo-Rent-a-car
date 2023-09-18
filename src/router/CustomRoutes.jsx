@@ -15,6 +15,8 @@ import ReservationDetailsPage from "../pages/user/ReservationDetails";
 import ProtectedRoute from "./ProtectedRoute";
 import AdminDashboardPage from "../pages/admin/AdminDashboardPage";
 import UnAuthorized from "../pages/common/UnAuthorized";
+import AdminContactMessagePage from "../pages/admin/AdminContactMessagePage";
+import AdminContactMessageEditPage from "../pages/admin/AdminContactMessageEditPage";
 
 const CustomRoutes = () => {
   return (
@@ -75,6 +77,25 @@ const CustomRoutes = () => {
                 </ProtectedRoute>
               }
             />
+
+            <Route path="contact-message">
+              <Route
+                index
+                element={
+                  <ProtectedRoute admin={true}>
+                    <AdminContactMessagePage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":messageId"
+                element={
+                  <ProtectedRoute admin={true}>
+                    <AdminContactMessageEditPage />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
           </Route>
 
           <Route path="*" element={<NotFoundPage />} />

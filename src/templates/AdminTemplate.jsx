@@ -4,12 +4,14 @@ import Sidebar from "../components/admin/common/Sidebar";
 
 const AdminTemplate = ({ children }) => {
   return (
-    <Container fluid className="">
+    <Container fluid>
       <Row>
-        <Col lg={3}>
+        <Col lg={2} className="p-0">
           <Sidebar />
         </Col>
-        <Col lg={9}>{children}</Col>
+        <Col lg={10} className="p-4">
+          {children}
+        </Col>
       </Row>
     </Container>
   );
