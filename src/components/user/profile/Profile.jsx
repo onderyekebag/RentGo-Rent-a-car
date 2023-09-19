@@ -12,8 +12,6 @@ import ReactInputMask from "react-input-mask-next";
 import { MdLocationPin } from "react-icons/md";
 import { TbZip } from "react-icons/tb";
 import { AiTwotoneMail } from "react-icons/ai";
-import { RiLockPasswordLine } from "react-icons/ri";
-import PasswordInput from "../../common/passwordInput/PasswordInput";
 import UpdatePassword from "./UpdatePassword";
 import { useAppSelector } from "../../../store/Hooks";
 import { updateUser } from "../../../api/UserService";

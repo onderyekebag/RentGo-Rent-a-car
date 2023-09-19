@@ -11,7 +11,7 @@ export const question = (title, text) => {
   });
 };
 
-export const toast = (title, icon = "info", timer = 4000) => {
+export const toast = (title, icon = "info", timer = 3000) => {
   Swal.fire({
     position: "center",
     icon,

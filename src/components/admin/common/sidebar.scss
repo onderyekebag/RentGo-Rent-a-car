@@ -1,8 +1,20 @@
 @use "../../../assets/scss/variables" as v;
 @use "../../../assets/scss/mixins" as m;
-
+.admin-sidebar-fixed {
+  position: fixed;
+  @media (max-width: 992px) {
+    position: static;
+  }
+}
+.admin-sidebar-content {
+  margin-left: 16.6%;
+  @media (max-width: 992px) {
+    margin-left: 0;
+  }
+}
 .admin-sidebar {
   background-color: v.$color1;
+
   @media (min-width: 992px) {
     height: 100vh;
     align-items: flex-start !important;

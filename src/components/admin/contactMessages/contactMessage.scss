@@ -1,0 +1,88 @@
+@use "../../../assets/scss/variables" as v;
+@use "../../../assets/scss/mixins" as m;
+.contact-message-edit {
+  .message-sender {
+    background-color: v.$color1;
+    padding: 0.5rem;
+    @include m.flexbox(row, space-between, center);
+    @media (max-width: 712px) {
+      @include m.flexbox(row, space-between, center);
+    }
+    .message-header {
+      @include m.flexbox();
+      svg {
+        font-size: 4.5rem;
+        color: v.$color4;
+        @media (max-width: 712px) {
+          font-size: 4rem;
+        }
+      }
+      .title {
+        h4 {
+          color: v.$color4;
+          font-size: 1.4rem;
+          margin-top: 10px;
+          margin-left: 15px;
+          @media (max-width: 712px) {
+            font-size: 1.1rem;
+            margin-left: 5px;
+          }
+          @media (max-width: 470px) {
+            font-size: 1.6rem;
+          }
+        }
+        p {
+          color: v.$color4;
+          margin-left: 15px;
+          @media (max-width: 712px) {
+            font-size: 1rem;
+            margin-left: 5px;
+          }
+          @media (max-width: 470px) {
+            display: none;
+          }
+        }
+      }
+    }
+    .message-button-group {
+      .btn-group {
+        @media (max-width: 712px) {
+          @include m.flexbox(column);
+        }
+        button {
+          margin-right: 20px;
+          color: v.$color4;
+          font-size: 1.5rem;
+          border-radius: 50%;
+          @media (max-width: 790px) {
+            font-size: 1rem;
+            margin-right: 0px;
+            &:nth-child(2) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+  .message-box {
+    background-color: v.$color3;
+    color: v.$color4;
+    h4 {
+      padding: 2rem 1rem;
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 1.2rem;
+      padding-left: 1rem;
+      padding-bottom: 15rem;
+      @media (max-width: 712px) {
+        font-size: 1rem;
+        padding-bottom: 5rem;
+      }
+    }
+    em {
+      padding: 1rem;
+    }
+  }
+}

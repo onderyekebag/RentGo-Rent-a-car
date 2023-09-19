@@ -18,3 +18,15 @@ export const getMessagesByPage = (
     { headers: authHeader() }
   );
 };
+
+export const getMessage = (id) => {
+  return axios.get(`${API_URL}/contactmessage/${id}`, {
+    headers: authHeader(),
+  });
+};
+
+export const deleteMessage = (id) => {
+  return axios.delete(`${API_URL}/contactmessage/${id}`, {
+    headers: authHeader(),
+  });
+};

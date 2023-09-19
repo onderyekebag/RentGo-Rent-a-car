@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   RiHome3Line,
   RiUser3Line,
@@ -18,7 +18,7 @@ import { logout } from "../../../store/slices/AuthSlice";
 const Sidebar = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
+  const { pathname } = useLocation();
   const handleLogout = () => {
     question("Logout", "Are you sure to logout ?").then((result) => {
       if (result.isConfirmed) {
@@ -40,19 +40,35 @@ const Sidebar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/admin">
+            <Nav.Link as={Link} to="/admin" active={pathname === "/admin"}>
               <RiDashboardLine /> Dashboard
             </Nav.Link>
-            <Nav.Link as={Link} to="/admin">
+            <Nav.Link
+              as={Link}
+              to="/admin/users"
+              active={pathname === "/admin/users"}
+            >
               <RiUser3Line /> Users
             </Nav.Link>
-            <Nav.Link as={Link} to="/admin">
+            <Nav.Link
+              as={Link}
+              to="/admin"
+              active={pathname === "/admin/vehicles"}
+            >
               <RiCarLine /> Vehicles
             </Nav.Link>
-            <Nav.Link as={Link} to="/admin">
+            <Nav.Link
+              as={Link}
+              to="/admin"
+              active={pathname === "/admin/reservations"}
+            >
               <RiFileList3Line /> Reservations
             </Nav.Link>
-            <Nav.Link as={Link} to="/admin/contact-message">
+            <Nav.Link
+              as={Link}
+              to="/admin/contact-message"
+              active={pathname === "/admin/contact-message"}
+            >
               <RiMessage3Line /> Contact Messages
             </Nav.Link>
             <Nav.Link as={Link} to="/">
