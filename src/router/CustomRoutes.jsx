@@ -19,6 +19,8 @@ import AdminContactMessagePage from "../pages/admin/AdminContactMessagePage";
 import AdminContactMessageEditPage from "../pages/admin/AdminContactMessageEditPage";
 import AdminUsersPage from "../pages/admin/AdminUsersPage";
 import AdminUsersEditPage from "../pages/admin/AdminUsersEditPage";
+import AdminReservationsPage from "../pages/admin/AdminReservationsPage";
+import AdminReservationsEditPage from "../pages/admin/AdminReservationsEditPage";
 
 const CustomRoutes = () => {
   return (
@@ -112,6 +114,25 @@ const CustomRoutes = () => {
                 element={
                   <ProtectedRoute admin={true}>
                     <AdminUsersEditPage />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+
+            <Route path="reservations">
+              <Route
+                index
+                element={
+                  <ProtectedRoute admin={true}>
+                    <AdminReservationsPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":reservationId"
+                element={
+                  <ProtectedRoute admin={true}>
+                    <AdminReservationsEditPage />
                   </ProtectedRoute>
                 }
               />

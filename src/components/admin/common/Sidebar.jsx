@@ -46,28 +46,28 @@ const Sidebar = () => {
             <Nav.Link
               as={Link}
               to="/admin/users"
-              active={pathname === "/admin/users"}
+              active={pathname.includes("users")}
             >
               <RiUser3Line /> Users
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="/admin"
-              active={pathname === "/admin/vehicles"}
+              to="/admin/vehicles"
+              active={pathname.includes("vehicles")}
             >
               <RiCarLine /> Vehicles
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="/admin"
-              active={pathname === "/admin/reservations"}
+              to="/admin/reservations"
+              active={pathname.includes("reservations")}
             >
               <RiFileList3Line /> Reservations
             </Nav.Link>
             <Nav.Link
               as={Link}
               to="/admin/contact-message"
-              active={pathname === "/admin/contact-message"}
+              active={pathname.includes("contact-message")}
             >
               <RiMessage3Line /> Contact Messages
             </Nav.Link>

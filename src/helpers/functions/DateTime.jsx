@@ -31,3 +31,11 @@ export const checkExpireDate = (date) => {
 export const formatDateTime = (dateTime) => {
   return moment(dateTime).format("lll");
 };
+
+export const getDate = (dateTime) => {
+  return moment(dateTime).format("YYYY-MM-DD");
+};
+
+export const getTime = (dateTime) => {
+  return moment(dateTime).format("HH:mm");
+};

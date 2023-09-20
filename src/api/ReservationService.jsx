@@ -37,3 +37,52 @@ export const getReservation = (id) => {
     headers: authHeader(),
   });
 };
+
+//! Admin endpoints
+
+export const getReservationsByPage = (
+  page = 0,
+  size = 20,
+  sort = "id",
+  direction = "DESC"
+) => {
+  return axios.get(
+    `${API_URL}/reservations/admin/all/pages?page=${page}&size=${size}&sort=${sort}&direction=${direction}`,
+    {
+      headers: authHeader(),
+    }
+  );
+};
+
+export const downloadReservations = () => {
+  return axios.get(`${API_URL}/excel/download/reservations`, {
+    headers: {
+      ...authHeader(),
+      "Content-Type":
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    },
+    responseType: "blob",
+  });
+};
+
+export const getReservationById = (id) => {
+  return axios.get(`${API_URL}/reservations/${id}/admin`, {
+    headers: authHeader(),
+  });
+};
+
+export const updateReservationById = (carId, reservationId, reservation) => {
+  return axios.put(
+    `${API_URL}/reservations/admin/auth?carId=${carId}&reservationId=${reservationId}`,
+    reservation,
+    {
+      headers: authHeader(),
+    }
+  );
+};
+
+export const deleteReservationById = (id) => {
+  return axios.delete(`${API_URL}/reservations/admin/${id}/auth`, {
+    headers: authHeader(),
+  });
+};

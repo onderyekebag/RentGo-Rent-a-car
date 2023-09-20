@@ -14,8 +14,14 @@ import ReactInputMask from "react-input-mask-next";
 import { question, toast } from "../../../helpers/functions/Swal";
 import { useFormik } from "formik";
 import PasswordInput from "../../common/passwordInput/PasswordInput";
-import { deleteUserById, getUserById } from "../../../api/UserService";
+import {
+  deleteUserById,
+  getUserById,
+  updateUserById,
+} from "../../../api/UserService";
 import { useNavigate, useParams } from "react-router-dom";
+import "./adminUser.scss";
+
 const AdminEditUsers = () => {
   const [loading, setLoading] = useState(false);
   const [deleting, setDeleting] = useState(false);
@@ -62,12 +68,14 @@ const AdminEditUsers = () => {
   });
 
   const onSubmit = async (values) => {
-    setLoading(true);
+    setUpdating(true);
     try {
+      await updateUserById(userId, values);
+      toast("User was updated.", "success");
     } catch (err) {
-      toast(err, "error");
+      toast(err.response.data.message, "error");
     } finally {
-      setLoading(false);
+      setUpdating(false);
     }
   };
 
@@ -116,9 +124,9 @@ const AdminEditUsers = () => {
       }
     );
   };
-
+  //! 1.30
   return (
-    <Container>
+    <Container className="admin-user-edit">
       {loading ? (
         <div className="d-flex justify-content-center align-items-center vh-100">
           <Spinner animation="grow" variant="danger" />
@@ -289,7 +297,7 @@ const AdminEditUsers = () => {
           </fieldset>
           {formik.values.builtIn && (
             <Alert variant="warning">
-              Built-in accounts cannot be deleted or updated
+              Built in accounts cannot be deleted or updated
             </Alert>
           )}
           <div className="text-end">
@@ -303,8 +311,15 @@ const AdminEditUsers = () => {
               </Button>
               {!formik.values.builtIn && (
                 <>
-                  <Button variant="primary">Update</Button>
-                  <Button variant="danger" onClick={handleDelete}>
+                  <Button variant="success" disabled={updating} type="submit">
+                    {updating && <Spinner animation="border" size="sm" />}
+                    Update
+                  </Button>
+                  <Button
+                    variant="danger"
+                    onClick={handleDelete}
+                    disabled={deleting}
+                  >
                     {deleting && <Spinner animation="border" size="sm" />}
                     Delete
                   </Button>

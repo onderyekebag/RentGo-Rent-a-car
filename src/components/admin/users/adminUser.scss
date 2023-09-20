@@ -1,0 +1,8 @@
+@use "../../../assets/scss/variables" as v;
+
+.admin-user-edit {
+  background-color: v.$color1;
+  padding: 2rem;
+  color: v.$color4;
+  padding-bottom: 5rem;
+}

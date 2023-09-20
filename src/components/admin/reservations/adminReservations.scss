@@ -1,0 +1,10 @@
+@use "../../../assets/scss/variables" as v;
+@use "../../../assets/scss/mixins" as m;
+
+.admin-reservation-edit {
+  background-color: v.$color1;
+  padding: 2rem;
+  color: v.$color4;
+  height: auto;
+  padding-bottom: 12rem;
+}
