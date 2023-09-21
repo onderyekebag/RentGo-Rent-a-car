@@ -124,7 +124,7 @@ const AdminEditUsers = () => {
       }
     );
   };
-  //! 1.30
+
   return (
     <Container className="admin-user-edit">
       {loading ? (

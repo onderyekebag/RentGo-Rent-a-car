@@ -1,0 +1,33 @@
+@use "../../../assets/scss/variables" as v;
+.vehicle-edit {
+  color: v.$color4;
+  background-color: v.$color1;
+  padding: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
+}
+.image-area {
+  background: linear-gradient(0deg, v.$color3, v.$color4);
+  position: relative;
+  min-height: 200px;
+
+  label {
+    margin: 0;
+    background-color: v.$color3;
+    color: v.$color4;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .image-error {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%);
+  }
+}

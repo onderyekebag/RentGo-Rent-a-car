@@ -21,6 +21,9 @@ import AdminUsersPage from "../pages/admin/AdminUsersPage";
 import AdminUsersEditPage from "../pages/admin/AdminUsersEditPage";
 import AdminReservationsPage from "../pages/admin/AdminReservationsPage";
 import AdminReservationsEditPage from "../pages/admin/AdminReservationsEditPage";
+import AdminVehiclesPage from "../pages/admin/AdminVehiclesPage";
+import AdminVehiclesEditPage from "../pages/admin/AdminVehiclesEditPage";
+import AdminVehiclesNewPage from "../pages/admin/AdminVehiclesNewPage";
 
 const CustomRoutes = () => {
   return (
@@ -133,6 +136,33 @@ const CustomRoutes = () => {
                 element={
                   <ProtectedRoute admin={true}>
                     <AdminReservationsEditPage />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+
+            <Route path="vehicles">
+              <Route
+                index
+                element={
+                  <ProtectedRoute admin={true}>
+                    <AdminVehiclesPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path=":vehicleId"
+                element={
+                  <ProtectedRoute admin={true}>
+                    <AdminVehiclesEditPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <ProtectedRoute admin={true}>
+                    <AdminVehiclesNewPage />
                   </ProtectedRoute>
                 }
               />
