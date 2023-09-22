@@ -30,8 +30,6 @@
 - react-router-dom@6
 - sass
 - swiper
-- web-vitals
-- react-scripts
 - recharts
 
 ---
