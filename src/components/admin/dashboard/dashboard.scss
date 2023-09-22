@@ -1,0 +1,42 @@
+@use "../../../assets/scss/variables" as v;
+@use "../../../assets/scss/mixins" as m;
+
+.dashboard {
+  background-color: v.$color1;
+  color: v.$color4;
+  padding: 0.7rem;
+
+  .dashboard-header {
+    background-color: v.$color2;
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-align: right;
+  }
+  .dashboard-card {
+    background-color: v.$color2;
+    padding: 1rem;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    h3 {
+      font-size: 1.5rem;
+      svg {
+        font-size: 1.5rem;
+        margin: 12px;
+        margin-top: 8px;
+      }
+    }
+    h1 {
+      border-top: 1px solid v.$color1;
+      padding: 1.2rem;
+      color: v.$color1;
+      border-bottom: 1px solid v.$color1;
+    }
+
+    &:hover {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+    }
+  }
+}

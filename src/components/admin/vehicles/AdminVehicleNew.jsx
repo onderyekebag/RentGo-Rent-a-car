@@ -50,20 +50,13 @@ const AdminVehicleNew = () => {
 
   const onSubmit = async (values) => {
     setLoading(true);
-    // API'a file upload ederken önce bir FormData oluşturulup, file bu FormData içine yerleştirilir
-    // Eğer varsa diğer bilgiler de eklenebilir.
     const formData = new FormData();
-    /* formData.append("firstName", "Ali");
-    formData.append("lastName", "Gel"); */
-
     formData.append("file", values.image);
 
     try {
       const resp = await uploadVehicleImage(formData);
       const imageId = resp.data.imageId;
-
       delete values.image;
-
       await createVehicle(imageId, values);
       toast("Vehicle was created", "success");
       navigate(-1);
@@ -84,11 +77,8 @@ const AdminVehicleNew = () => {
     const file = e.target.files[0];
     if (!file) return;
     formik.setFieldValue("image", file);
-
-    //Görüntüyü image içinde göstermek için:
     const reader = new FileReader();
     reader.readAsDataURL(file);
-
     reader.onloadend = () => {
       setImageSrc(reader.result);
     };

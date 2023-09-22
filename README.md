@@ -32,6 +32,7 @@
 - swiper
 - web-vitals
 - react-scripts
+- recharts
 
 ---
 
