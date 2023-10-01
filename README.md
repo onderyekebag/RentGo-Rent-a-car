@@ -5,10 +5,6 @@
 - Vite + React
 
 ---
-
-- npm install
-- npm run dev
-
 ## Paket kurulumları yapıldı
 
 - reduxjs/toolkit
