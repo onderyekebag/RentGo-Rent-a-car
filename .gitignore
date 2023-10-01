@@ -15,7 +15,7 @@ dist-ssr
 .env.development.local
 .env.test.local
 .env.production.local
-Settings.jsx
+Settings.js
 
 # Editor directories and files
 .vscode/*
